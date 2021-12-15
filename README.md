@@ -25,14 +25,18 @@
 
 ### Official Community
 
+- [Official Chat Room - Discord](https://discord.gg/upGTkWp)
+
 ### Tutorials
 
 #### Video Tutorials
 
-- Full Front End Walkthru <https://www.youtube.com/watch?v=v5Wuvi_fjTI&t>
+- Full Front End Walkthru @bbrendon <https://www.youtube.com/watch?v=v5Wuvi_fjTI&t>
 
 #### Articles
 
 <https://www.technibble.com/tacticalrmm-a-free-open-source-rmm/>
 
 # Community App Extensions
+
+...Coming Soon
