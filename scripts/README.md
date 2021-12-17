@@ -1,0 +1,1 @@
+All Community scripts with public modules will be replicated here so Tactical RMM can validate all source scripts used in Tactical RMM installations.

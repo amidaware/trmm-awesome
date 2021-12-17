@@ -2,14 +2,15 @@
 
 > A list of awesome things related to Tactical RMM
 
+- [Awesome Tactical RMM (TRMM) ![Awesome](https://github.com/sindresorhus/awesome)](#awesome-tactical-rmm-trmm-)
 - [Resources](#resources)
     - [Official Resources](#official-resources)
     - [External Resources](#external-resources)
     - [Official Community](#official-community)
-    - [Local Communities](#local-communities)
     - [Tutorials](#tutorials)
       - [Video Tutorials](#video-tutorials)
       - [Articles](#articles)
+- [Community App Extensions](#community-app-extensions)
 
 # Resources
 
@@ -18,7 +19,6 @@
 - [Official Documentation](https://wh1te909.github.io/tacticalrmm/)
 - [Tactical RMM GitHub Repo](https://github.com/wh1te909/tacticalrmm)
 - [Tactical RMM Release Notes](https://github.com/wh1te909/tacticalrmm/releases)
-
 
 ### External Resources
 > These resources have not been created by the Tactical RMM Team, nor do we maintain them or financially benefit from them.
