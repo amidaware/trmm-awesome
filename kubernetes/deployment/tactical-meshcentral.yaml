@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-meshcentral
+  name: tactical-meshcentral
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-meshcentral
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/mesh-db: "true"
+        network/proxy: "true"
+        service: tactical-meshcentral
+    spec:
+      containers:
+        - name: trmm-meshcentral
+          image: tacticalrmm/tactical-meshcentral:0.10.5-dev
+          resources: {}
+          env:
+            - name: MESH_HOST
+              value: mesh.rmm.mydomain.com
+            - name: MESH_USER
+              value: meshuser
+            - name: MESH_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: tactical-secrets
+                  key: mesh-password
+            - name: MESH_PERSISTENT_CONFIG
+              value: "0"
+            - name: MONGODB_USER
+              value: mongodbuser
+            - name: MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tactical-secrets
+                  key: mongodb-password
+            - name: NGINX_HOST_IP # Point to NGINX service
+              value: tactical-nlb
+            - name: WS_MASK_OVERRIDE # Enable for Traefik compatibility
+              value: "0"
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+            - mountPath: /home/node/app/meshcentral-data
+              name: mesh-data
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data
+        - name: mesh-data
+          persistentVolumeClaim:
+            claimName: mesh-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-meshcentral
+  name: tactical-meshcentral
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 80
+    - name: "https"
+      port: 443
+      targetPort: 443
+  selector:
+    service: tactical-meshcentral

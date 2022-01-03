@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  creationTimestamp: null
+  name: proxy
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchLabels:
+      network/proxy: "true"
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: api-db
+  namespace: tacticalrmm
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              network/api-db: "true"
+        - podSelector:
+            matchLabels:
+              network/proxy: "true"
+  podSelector:
+    matchLabels:
+      network/api-db: "true"
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: mesh-db
+  namespace: tacticalrmm
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              network/mesh-db: "true"
+        - podSelector:
+            matchLabels:
+              network/proxy: "true"
+  podSelector:
+    matchLabels:
+      network/mesh-db: "true"
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: redis
+  namespace: tacticalrmm
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              network/redis: "true"
+  podSelector:
+    matchLabels:
+      network/redis: "true"

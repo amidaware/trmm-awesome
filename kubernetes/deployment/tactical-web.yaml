@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-nlb
+  name: tactical-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-nlb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/proxy: "true"
+        service: tactical-nlb
+    spec:
+      containers:
+        - name: nginx
+          image: tacticalrmm/tactical-nginx:0.10.5-dev
+          resources: {}
+          env:
+            - name: API_HOST
+              value: api.rmm.mydomain.com
+            - name: APP_HOST
+              value: rmm.mydomain.com
+            - name: MESH_HOST
+              value: mesh.rmm.mydomain.com
+            - name: NGINX_RESOLVER
+              value: kube-dns.kube-system.svc.cluster.local
+            - name: BACKEND_SERVICE
+              value: tactical-backend.tacticalrmm.svc.cluster.local
+            - name: FRONTEND_SERVICE
+              value: tactical-frontend.tacticalrmm.svc.cluster.local
+            - name: MESH_SERVICE
+              value: tactical-meshcentral.tacticalrmm.svc.cluster.local
+            - name: WEBSOCKETS_SERVICE
+              value: tactical-websockets.tacticalrmm.svc.cluster.local
+            - name: CERT_PUB_PATH
+              value: /etc/ssl/certs/custom/tls.crt
+            - name: CERT_PRIV_PATH
+              value: /etc/ssl/certs/custom/tls.key
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+            - mountPath: /etc/ssl/certs/custom
+              name: tactical-certs
+        - name: trmm-nats
+          image: tacticalrmm/tactical-nats:latest
+          resources: {}
+          env:
+            - name: API_HOST
+              value: api.rmm.mydomain.com
+          ports:
+            - containerPort: 4222
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+            - mountPath: /etc/ssl/certs/custom
+              name: tactical-certs
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data
+        - name: tactical-certs
+          secret:
+            secretName: rmm-mydomain-com-tls
+status: {}
