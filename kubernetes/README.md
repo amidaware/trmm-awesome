@@ -8,6 +8,7 @@
 # Pre-requisites
 - A working Kubernetes cluster
 - Kubernetes [NFS provisioner](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner) or another storage provisioner that supports ```ReadWriteMany```
+- [cert-manager](https://github.com/jetstack/cert-manager) or a Lets Encrypt cert issuer of your choice. Alternatively, you can mount your own certs as secret volumes into the pods
 
 # Deploying the files
 1. ```kubectl apply -f namespace.yaml```
