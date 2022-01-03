@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-redis
+  name: tactical-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/redis: "true"
+        service: tactical-redis
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: trmm-redis
+          image: redis:6.0-alpine
+          args:
+            - redis-server
+            - --appendonly
+            - "yes"
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+      restartPolicy: Always
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-redis
+  name: tactical-redis
+spec:
+  ports:
+    - name: "6379"
+      port: 6379
+      targetPort: 6379
+  selector:
+    service: tactical-redis

@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-celery
+  name: tactical-celery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-celery
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/api-db: "true"
+        network/redis: "true"
+        service: tactical-celery
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: trmm-celery
+          image: tacticalrmm/tactical:0.10.5-dev
+          args:
+            - tactical-celery
+          resources: {}
+          env:
+            - name: CERT_PUB_PATH
+              value: /etc/ssl/certs/custom/tls.crt
+            - name: CERT_PRIV_PATH
+              value: /etc/ssl/certs/custom/tls.key
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-celerybeat
+  name: tactical-celerybeat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-celerybeat
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/api-db: "true"
+        network/redis: "true"
+        service: tactical-celerybeat
+    spec:
+      containers:
+        - name: trmm-celerybeat
+          image: tacticalrmm/tactical:latest
+          args:
+            - tactical-celerybeat
+          resources: {}
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data

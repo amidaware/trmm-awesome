@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: rmm-mydomain-com
+  namespace: tacticalrmm
+spec:
+  secretName: rmm-mydomain-com-tls
+  commonName: rmm.mydomain.com
+  dnsNames:
+  - rmm.mydomain.com
+  - api.rmm.mydomain.com
+  - mesh.rmm.mydomain.com
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer

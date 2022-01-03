@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-frontend
+  name: tactical-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: tactical-frontend
+    spec:
+      containers:
+        - name: trmm-frontend
+          image: tacticalrmm/tactical-frontend:latest
+          resources: {}
+          env:
+            - name: API_HOST
+              value: api.rmm.mydomain.com
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-frontend
+  name: tactical-frontend
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 80
+    - name: "https"
+      port: 443
+      targetPort: 443
+  selector:
+    service: tactical-frontend

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-mongodb
+  name: tactical-mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-mongodb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/mesh-db: "true"
+        service: tactical-mongodb
+    spec:
+      securityContext:
+        runAsUser: 2000
+        fsGroup: 2000
+      containers:
+        - name: trmm-mongodb
+          image: mongo:4.4
+          resources: {}
+          env:
+            - name: MONGO_INITDB_DATABASE
+              value: meshcentral
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: mongodbuser
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tactical-secrets
+                  key: mongodb-password
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-data
+      restartPolicy: Always
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: mongo-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-mongodb
+  name: tactical-mongodb
+spec:
+  ports:
+    - name: "27017"
+      port: 27017
+      targetPort: 27017
+  selector:
+    service: tactical-mongodb

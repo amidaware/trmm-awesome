@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-websockets
+  name: tactical-websockets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-websockets
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/api-db: "true"
+        network/redis: "true"
+        network/proxy: "true"
+        service: tactical-websockets
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: trmm-websockets
+          image: tacticalrmm/tactical:latest
+          args:
+            - tactical-websockets
+          resources: {}
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-websockets
+  name: tactical-websockets
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 80
+    - name: "https"
+      port: 443
+      targetPort: 443
+    - name: "8383"
+      port: 8383
+      targetPort: 8383
+  selector:
+    service: tactical-websockets

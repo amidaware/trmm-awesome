@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-backend
+  name: tactical-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: tactical-backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        network/api-db: "true"
+        network/redis: "true"
+        network/proxy: "true"
+        service: tactical-backend
+    spec:
+      containers:
+        - name: trmm-backend
+          image: tacticalrmm/tactical:0.10.5-dev
+          args:
+            - tactical-backend
+          resources: {}
+          env:
+            - name: CERT_PUB_PATH
+              value: /etc/ssl/certs/custom/tls.crt
+            - name: CERT_PRIV_PATH
+              value: /etc/ssl/certs/custom/tls.key
+          volumeMounts:
+            - mountPath: /opt/tactical
+              name: tactical-data
+            - mountPath: /etc/ssl/certs/custom
+              name: tactical-certs
+      restartPolicy: Always
+      volumes:
+        - name: tactical-data
+          persistentVolumeClaim:
+            claimName: tactical-data
+        - name: tactical-certs
+          secret:
+            secretName: rmm-mydomain-com-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-backend
+  name: tactical-backend
+spec:
+  ports:
+    - name: "http"
+      port: 80
+      targetPort: 80
+    - name: "https"
+      port: 443
+      targetPort: 443
+  selector:
+    service: tactical-backend
