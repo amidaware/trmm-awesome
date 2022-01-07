@@ -9,6 +9,14 @@ mesh_install="/meshcentral"
 mesh_data="/meshcentral/meshcentral-data"
 mesh_program="node_modules/meshcentral"
 
+if ! which jq >/dev/null
+then
+	echo "jq is not installed"
+	echo "Please install jq with:"
+	echo "  sudo apt-get install jq"
+	exit 1
+fi
+
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
