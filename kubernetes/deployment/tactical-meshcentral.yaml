@@ -47,6 +47,21 @@ spec:
               value: tactical-nlb
             - name: WS_MASK_OVERRIDE # Enable for Traefik compatibility
               value: "0"
+            - name: SMTP_HOST
+              value: smtp.example.com
+            - name: SMTP_PORT
+              value: "587"
+            - name: SMTP_FROM
+              value: mesh@example.com
+            - name: SMTP_USER
+              value: mesh@example.com
+            - name: SMTP_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: tactical-secrets
+                  key: mesh-smtp-password
+            - name: SMTP_TLS
+              value: "false"
           volumeMounts:
             - mountPath: /opt/tactical
               name: tactical-data
