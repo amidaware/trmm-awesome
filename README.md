@@ -2,7 +2,7 @@
 
 > A list of awesome things related to Tactical RMM
 
-- [Awesome Tactical RMM (TRMM) ![Awesome](https://github.com/sindresorhus/awesome)](#awesome-tactical-rmm-trmm-)
+- [Awesome Tactical RMM (TRMM)](https://github.com/amidaware/trmm-awesome)
 - [Resources](#resources)
     - [Official Resources](#official-resources)
     - [External Resources](#external-resources)
