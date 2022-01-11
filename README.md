@@ -23,6 +23,10 @@
 ### External Resources
 > These resources have not been created by the Tactical RMM Team, nor do we maintain them or financially benefit from them.
 
+#### Windows 7 and Powershell v2 scripts
+
+<https://github.com/darimm/RMMFunctions>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
