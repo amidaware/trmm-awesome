@@ -19,9 +19,12 @@ spec:
         network/proxy: "true"
         service: tactical-nlb
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
         - name: nginx
-          image: tacticalrmm/tactical-nginx:0.10.5-dev
+          image: tacticalrmm/tactical-nginx:0.11.4-dev
           resources: {}
           env:
             - name: API_HOST
@@ -45,19 +48,21 @@ spec:
             - name: CERT_PRIV_PATH
               value: /etc/ssl/certs/custom/tls.key
           ports:
-            - containerPort: 80
-            - containerPort: 443
+            - containerPort: 8080
+            - containerPort: 4443
           volumeMounts:
             - mountPath: /opt/tactical
               name: tactical-data
             - mountPath: /etc/ssl/certs/custom
               name: tactical-certs
         - name: trmm-nats
-          image: tacticalrmm/tactical-nats:latest
+          image: tacticalrmm/tactical-nats:0.11.4-dev
           resources: {}
           env:
             - name: API_HOST
               value: api.rmm.mydomain.com
+            - name: NATS_CONFIG_CHECK_INTERVAL
+              value: "10"
           ports:
             - containerPort: 4222
           volumeMounts:

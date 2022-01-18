@@ -17,9 +17,12 @@ spec:
       labels:
         service: tactical-frontend
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
         - name: trmm-frontend
-          image: tacticalrmm/tactical-frontend:latest
+          image: tacticalrmm/tactical-frontend:0.11.4-dev
           resources: {}
           env:
             - name: API_HOST
@@ -37,10 +40,7 @@ metadata:
 spec:
   ports:
     - name: "http"
-      port: 80
-      targetPort: 80
-    - name: "https"
-      port: 443
-      targetPort: 443
+      port: 8080
+      targetPort: 8080
   selector:
     service: tactical-frontend

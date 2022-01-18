@@ -26,7 +26,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: trmm-websockets
-          image: tacticalrmm/tactical:latest
+          image: tacticalrmm/tactical:0.11.4-dev
           args:
             - tactical-websockets
           resources: {}

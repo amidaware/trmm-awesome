@@ -20,9 +20,12 @@ spec:
         network/proxy: "true"
         service: tactical-meshcentral
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
         - name: trmm-meshcentral
-          image: tacticalrmm/tactical-meshcentral:0.10.5-dev
+          image: tacticalrmm/tactical-meshcentral:0.11.4-dev
           resources: {}
           env:
             - name: MESH_HOST
@@ -45,6 +48,8 @@ spec:
                   key: mongodb-password
             - name: NGINX_HOST_IP # Point to NGINX service
               value: tactical-nlb
+            - name: NGINX_HOST_PORT # Should match the EXTERNAL port of the NGINX service
+              value: "443"
             - name: WS_MASK_OVERRIDE # Enable for Traefik compatibility
               value: "0"
             - name: SMTP_HOST
@@ -87,10 +92,10 @@ metadata:
 spec:
   ports:
     - name: "http"
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
     - name: "https"
-      port: 443
-      targetPort: 443
+      port: 4443
+      targetPort: 4443
   selector:
     service: tactical-meshcentral

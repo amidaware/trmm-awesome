@@ -21,9 +21,12 @@ spec:
         network/proxy: "true"
         service: tactical-backend
     spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
         - name: trmm-backend
-          image: tacticalrmm/tactical:0.10.5-dev
+          image: tacticalrmm/tactical:0.11.4-dev
           args:
             - tactical-backend
           resources: {}
@@ -57,10 +60,10 @@ metadata:
 spec:
   ports:
     - name: "http"
-      port: 80
-      targetPort: 80
+      port: 8080
+      targetPort: 8080
     - name: "https"
-      port: 443
-      targetPort: 443
+      port: 4443
+      targetPort: 4443
   selector:
     service: tactical-backend
