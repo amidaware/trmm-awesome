@@ -16,7 +16,7 @@
 
 ### Official Resources
 
-- [Official Documentation](https://wh1te909.github.io/tacticalrmm/)
+- [Official Documentation](https://docs.tacticalrmm.com/)
 - [Tactical RMM GitHub Repo](https://github.com/wh1te909/tacticalrmm)
 - [Tactical RMM Release Notes](https://github.com/wh1te909/tacticalrmm/releases)
 
