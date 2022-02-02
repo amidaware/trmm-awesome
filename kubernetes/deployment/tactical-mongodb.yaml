@@ -20,8 +20,8 @@ spec:
         service: tactical-mongodb
     spec:
       securityContext:
-        runAsUser: 2000
-        fsGroup: 2000
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
         - name: trmm-mongodb
           image: mongo:4.4
