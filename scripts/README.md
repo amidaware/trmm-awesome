@@ -1,1 +1,1 @@
-All Community scripts with public modules will be replicated here so Tactical RMM can validate all source scripts used in Tactical RMM installations.
+This folder is for misc scripts for specific tasks that aren't applicable in <https://github.com/amidaware/community-scripts>
