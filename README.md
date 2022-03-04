@@ -31,6 +31,10 @@
 
 <https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
 
+#### Azure terraform scripts
+
+<https://github.com/redanthrax/tacticalrmm-aks>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
