@@ -31,6 +31,9 @@
 
 <https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
 
+#### Kubernetes files
+
+<https://github.com/amidaware/trmm-awesome/tree/main/kubernetes>
 #### Azure terraform scripts
 
 <https://github.com/redanthrax/tacticalrmm-aks>
