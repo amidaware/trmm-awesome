@@ -31,6 +31,10 @@
 
 <https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
 
+#### Rotating backup scripts
+
+<https://github.com/fts-tmassey/tacticalrmm-cronbackup>
+
 #### Kubernetes files
 
 <https://github.com/amidaware/trmm-awesome/tree/main/kubernetes>
