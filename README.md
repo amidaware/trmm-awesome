@@ -38,9 +38,14 @@
 #### Kubernetes files
 
 <https://github.com/amidaware/trmm-awesome/tree/main/kubernetes>
+
 #### Azure terraform scripts
 
 <https://github.com/redanthrax/tacticalrmm-aks>
+
+#### Docker update, certificates and other stuff
+
+<https://github.com/vaughngx4/tactical-stuff>
 
 ### Official Community
 
