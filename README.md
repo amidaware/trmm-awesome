@@ -61,6 +61,8 @@
 
 <https://www.technibble.com/tacticalrmm-a-free-open-source-rmm/>
 
+[Howto install Tactical RMM including MeshCentral on Nethserver with docker](https://community.nethserver.org/t/howto-install-tactical-rmm-including-meshcentral-on-nethserver-with-docker/19112)
+
 # Community App Extensions
 
 ...Coming Soon
