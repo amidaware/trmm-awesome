@@ -47,6 +47,10 @@
 
 <https://github.com/vaughngx4/tactical-stuff>
 
+#### Migrate MeshCentral2 database from mongo to postgres
+
+<https://github.com/amidaware/trmm-awesome/blob/main/scripts/migrate-mesh-to-postgres.sh>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
@@ -60,6 +64,8 @@
 #### Articles
 
 <https://www.technibble.com/tacticalrmm-a-free-open-source-rmm/>
+
+[Howto install Tactical RMM including MeshCentral on Nethserver with docker](https://community.nethserver.org/t/howto-install-tactical-rmm-including-meshcentral-on-nethserver-with-docker/19112)
 
 # Community App Extensions
 
