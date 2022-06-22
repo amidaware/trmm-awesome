@@ -63,6 +63,8 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 ### Tutorials
 
+[Server Installation (German)](https://www.howtoforge.de/uncategorized/tactical-rmm-server-installation-zur-verwaltung-von-windows-clients/)
+
 #### Video Tutorials
 
 - Full Front End Walkthru @bbrendon <https://www.youtube.com/watch?v=v5Wuvi_fjTI&t>
