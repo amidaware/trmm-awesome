@@ -31,6 +31,12 @@
 
 <https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
 
+#### Grafana Dashboards
+
+Get graphical dashboards for status screens, wall TVs and NOCs
+
+<https://github.com/dinger1986/TRMM-Grafana>
+
 #### Rotating backup scripts
 
 <https://github.com/fts-tmassey/tacticalrmm-cronbackup>
