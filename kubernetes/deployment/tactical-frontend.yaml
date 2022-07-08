@@ -22,7 +22,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: trmm-frontend
-          image: tacticalrmm/tactical-frontend:0.11.4-dev
+          image: tacticalrmm/tactical-frontend:0.14.1
           resources: {}
           env:
             - name: API_HOST

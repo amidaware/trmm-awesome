@@ -24,7 +24,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: nginx
-          image: tacticalrmm/tactical-nginx:0.11.4-dev
+          image: tacticalrmm/tactical-nginx:0.14.1
           resources: {}
           env:
             - name: API_HOST
@@ -43,6 +43,8 @@ spec:
               value: tactical-meshcentral.tacticalrmm.svc.cluster.local
             - name: WEBSOCKETS_SERVICE
               value: tactical-websockets.tacticalrmm.svc.cluster.local
+            - name: NATS_SERVICE
+              value: tactical-nats.tacticalrmm.svc.cluster.local
             - name: CERT_PUB_PATH
               value: /etc/ssl/certs/custom/tls.crt
             - name: CERT_PRIV_PATH
@@ -56,7 +58,7 @@ spec:
             - mountPath: /etc/ssl/certs/custom
               name: tactical-certs
         - name: trmm-nats
-          image: tacticalrmm/tactical-nats:0.11.4-dev
+          image: tacticalrmm/tactical-nats:0.14.1
           resources: {}
           env:
             - name: API_HOST
@@ -65,6 +67,7 @@ spec:
               value: "10"
           ports:
             - containerPort: 4222
+            - containerPort: 9235
           volumeMounts:
             - mountPath: /opt/tactical
               name: tactical-data
@@ -79,3 +82,19 @@ spec:
           secret:
             secretName: rmm-mydomain-com-tls
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: tacticalrmm
+  labels:
+    app: tacticalrmm
+    service: tactical-nats
+  name: tactical-nats
+spec:
+  type: ClusterIP
+  ports:
+    - name: "nats-ws"
+      port: 9235
+  selector:
+    service: tactical-nlb
