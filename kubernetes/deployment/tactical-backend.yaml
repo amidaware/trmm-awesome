@@ -26,7 +26,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: trmm-backend
-          image: tacticalrmm/tactical:0.11.4-dev
+          image: tacticalrmm/tactical:0.14.1
           args:
             - tactical-backend
           resources: {}

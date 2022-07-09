@@ -3,7 +3,7 @@
 
 **Desription:** TacticalRMM Kubernetes manifests tested & working on Digital Ocean managed Kubernetes (DOKS).
 
-**Disclaimer:** _These manifests rely on experimental developer images and as such are NOT SUPPORTED, at least until the required changes are merged into the main image. I have done my best to make them as secure as possible however I am NOT responsible for anything that happens to you or your data as a result of using these files. Please do your due dilligence security-wise and open a Github issue if you wish to report a problem. USE AT YOUR OWN RISK. By using these files you agree that you are the sole entity responsible for any damages that may arise as a result._
+**Disclaimer:** _These manifests are experimental and as such are NOT SUPPORTED. I have done my best to make them as secure as possible however I am NOT responsible for anything that happens to you or your data as a result of using these files. Please do your due dilligence security-wise and open a Github issue if you wish to report a problem. USE AT YOUR OWN RISK. By using these files you agree that you are the sole entity responsible for any damages that may arise as a result._
 
 # Pre-requisites
 - A working Kubernetes cluster
