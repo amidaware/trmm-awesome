@@ -57,6 +57,10 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/amidaware/trmm-awesome/blob/main/scripts/migrate-mesh-to-postgres.sh>
 
+#### trmm-cli access to api
+
+<https://gitlab.com/NiceGuyIT/trmm-cli>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
