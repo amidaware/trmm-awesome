@@ -1,0 +1,105 @@
+### Find tacticalrmm postgres volume
+
+sudo docker volume ls
+
+
+### Copy mountpoint info
+
+sudo docker volume inspect tacticalrmm_postgres_data
+
+"Mountpoint": "/path/to/docker/volumes/tacticalrmm_postgres_data/_data"
+
+
+### Stop tactical containers
+
+
+### Dump database
+
+sudo docker run -d --name=temppostgres -e POSTGRES_USER=tactical -e POSTGRES_PASSWORD=password -e POSTGRES_DB=tacticalrmm -v /path/to/docker/volumes/tacticalrmm_postgres_data/_data:/var/lib/postgresql/data postgres:13-alpine
+
+sudo docker exec -it temppostgres bash
+
+pg_dump -U tactical -d tacticalrmm > /var/lib/postgresql/data/dump.sql
+
+exit
+
+
+### Backup postgres volume using parent folder
+
+sudo cp -R /path/to/docker/volumes/tacticalrmm_postgres_data/ /path/to/docker/volumes/tacticalrmm_postgres_data_backup
+
+
+### Stop old container and remove it
+
+sudo docker stop temppostgres
+
+sudo docker rm temppostgres
+
+
+### Delete old volume
+
+sudo rm -rf /path/to/docker/volumes/tacticalrmm_postgres_data
+
+
+### Pull new image
+
+sudo docker pull postgres:14-alpine
+
+
+### start postgres14 container
+
+sudo docker run -d --name=temppostgres -e POSTGRES_USER=tactical -e POSTGRES_PASSWORD=password -e POSTGRES_DB=tacticalrmm -v /path/to/docker/volumes/tacticalrmm_postgres_data/_data:/var/lib/postgresql/data postgres:14-alpine
+
+
+### Copy dump to docker postgres dir
+
+sudo cp /path/to/docker/volumes/tacticalrmm_postgres_data_backup/_data/dump.sql /path/to/docker/volumes/tacticalrmm_postgres_data/_data/dump.sql
+
+
+### log into updated container/image
+
+sudo docker exec -it temppostgres bash
+
+
+### Update dump perms
+
+chmod 755 /var/lib/postgresql/data/dump.sql
+
+
+### import database into updated container/image
+
+psql -U tactical -d tacticalrmm < /var/lib/postgresql/data/dump.sql
+
+
+### Double-check postgres user settings
+
+psql tacticalrmm tactical
+	
+ALTER ROLE tactical SET client_encoding TO 'utf8';
+
+ALTER ROLE tactical SET default_transaction_isolation TO 'read committed';
+
+ALTER ROLE tactical SET timezone TO 'UTC';
+
+GRANT ALL PRIVILEGES ON DATABASE tacticalrmm TO tactical;
+
+quit
+
+exit
+
+
+### Stop and remove temp postgres container
+
+sudo docker stop temppostgres
+
+sudo docker rm temppostgres
+
+
+### Change docker compose
+
+change
+image: postgres:13-alpine
+to
+image: postgres:14-alpine
+
+### Start the stack

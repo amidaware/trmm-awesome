@@ -27,10 +27,6 @@
 
 <https://github.com/darimm/RMMFunctions>
 
-#### Docker backup scripts
-
-<https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
-
 #### Grafana Dashboards
 
 Get graphical dashboards for status screens, wall TVs and NOCs
@@ -45,21 +41,29 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/amidaware/trmm-awesome/tree/main/kubernetes>
 
-#### Azure terraform scripts
+#### Migrate MeshCentral2 database from mongo to postgres
 
-<https://github.com/redanthrax/tacticalrmm-aks>
+<scripts/migrate-mesh-to-postgres.sh>
+
+#### trmm-cli access to api
+
+<https://gitlab.com/NiceGuyIT/trmm-cli>
 
 #### Docker update, certificates and other stuff
 
 <https://github.com/vaughngx4/tactical-stuff>
 
-#### Migrate MeshCentral2 database from mongo to postgres
+#### Docker upgrade postgres 13 to 14
 
-<https://github.com/amidaware/trmm-awesome/blob/main/scripts/migrate-mesh-to-postgres.sh>
+<scripts/trmmdockerpostgresupdate.txt>
 
-#### trmm-cli access to api
+#### Docker backup scripts
 
-<https://gitlab.com/NiceGuyIT/trmm-cli>
+<https://github.com/larseberhardt/TRMM-Docker-Backup-Script>
+
+#### Azure terraform scripts
+
+<https://github.com/redanthrax/tacticalrmm-aks>
 
 ### Official Community
 
