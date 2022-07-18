@@ -43,7 +43,7 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 #### Migrate MeshCentral2 database from mongo to postgres
 
-<scripts/migrate-mesh-to-postgres.sh>
+<https://github.com/amidaware/trmm-awesome/blob/main/scripts/migrate-mesh-to-postgres.sh>
 
 #### trmm-cli access to api
 
@@ -55,7 +55,7 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 #### Docker upgrade postgres 13 to 14
 
-<scripts/trmmdockerpostgresupdate.txt>
+<https://github.com/amidaware/trmm-awesome/blob/main/scripts/trmmdockerpostgresupdate.txt>
 
 #### Docker backup scripts
 
