@@ -69,6 +69,17 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
 
+### Misc Scripts from Users
+
+- Deleting Clients and Sites in TRMM
+- Print job fixing
+- Preview updates to ignore across all agents using the API and without installing any 3rd party libraries
+- Toggle the approval and installation of a specific KB across all agents using the API and without installing any 3rd party libraries
+- Syncs agents from Tactical RMM to Hudu
+- Installs Sophos Endpoint via the Sophos API
+
+<https://github.com/bc24fl/tacticalrmm-scripts>
+
 ### Tutorials
 
 [Server Installation (German)](https://www.howtoforge.de/uncategorized/tactical-rmm-server-installation-zur-verwaltung-von-windows-clients/)
