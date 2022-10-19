@@ -65,6 +65,10 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/redanthrax/tacticalrmm-aks>
 
+### Zabbix Howto
+
+<https://github.com/bernardolankheet/TacticalRMM-Extras/tree/devep/Template-TRMM-for-Zabbix>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
