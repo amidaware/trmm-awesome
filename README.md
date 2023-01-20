@@ -21,7 +21,12 @@
 - [Tactical RMM Release Notes](https://github.com/wh1te909/tacticalrmm/releases)
 
 ### External Resources
+
 > These resources have not been created by the Tactical RMM Team, nor do we maintain them or financially benefit from them.
+
+Since you're probably an MSP or doing Computer management stuff here's a google sheet with a bunch of services that you can check for yourself. If you see missing data, feel free to update and help the next guy. 
+
+<https://docs.google.com/spreadsheets/d/1Z5JUC-FCYAIzyW2rAoXLpQYq0a8VFJ5VUh5gqSerWPY/>
 
 #### Windows 7 and Powershell v2 scripts
 
