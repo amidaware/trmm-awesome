@@ -74,6 +74,12 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/bernardolankheet/TacticalRMM-Extras/tree/devep/Template-TRMM-for-Zabbix>
 
+### RustDesk Integration
+
+Install your own RustDesk Server as an alternative to MeshCentral
+
+<https://github.com/vegetable8/TRMM-RustDesk-Integration>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
