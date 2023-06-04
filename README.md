@@ -66,6 +66,10 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/redanthrax/tacticalrmm-aks>
 
+#### Rundeck Plugin
+
+<https://github.com/SoarinFerret/tacticalrmm-rundeck-plugin>
+
 ### Zabbix Howto
 
 <https://github.com/bernardolankheet/TacticalRMM-Extras/tree/devep/Template-TRMM-for-Zabbix>
