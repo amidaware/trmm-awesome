@@ -70,15 +70,18 @@ Get graphical dashboards for status screens, wall TVs and NOCs
 
 <https://github.com/SoarinFerret/tacticalrmm-rundeck-plugin>
 
-### Zabbix Howto
+#### Zabbix Howto
 
 <https://github.com/bernardolankheet/TacticalRMM-Extras/tree/devep/Template-TRMM-for-Zabbix>
 
-### RustDesk Integration
+#### RustDesk Integration
 
 Install your own RustDesk Server as an alternative to MeshCentral
 
 <https://github.com/vegetable8/TRMM-RustDesk-Integration>
+
+#### Webhooks
+<https://github.com/daileycomputerconsulting/tactical-rmm-webhooks>
 
 ### Official Community
 
