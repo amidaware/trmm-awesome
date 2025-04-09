@@ -32,6 +32,9 @@ Since you're probably an MSP or doing Computer management stuff here's a google 
 
 <https://github.com/darimm/RMMFunctions>
 
+#### Install Tactical Agent via MSI / Active Directory
+<https://github.com/SrLiath/TaticalRmmMassiveInstallAd>
+
 #### Grafana Dashboards
 
 Get graphical dashboards for status screens, wall TVs and NOCs
