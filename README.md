@@ -83,6 +83,9 @@ Install your own RustDesk Server as an alternative to MeshCentral
 
 <https://github.com/vegetable8/TRMM-RustDesk-Integration>
 
+#### Zero-touch Let’s Encrypt certificate sync for Tactical RMM nginx reverse proxies
+<https://github.com/JVKeller/Cert-Sync>
+
 #### Webhooks
 <https://github.com/daileycomputerconsulting/tactical-rmm-webhooks>
 
