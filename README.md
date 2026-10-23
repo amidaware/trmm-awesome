@@ -89,6 +89,12 @@ Install your own RustDesk Server as an alternative to MeshCentral
 #### Webhooks
 <https://github.com/daileycomputerconsulting/tactical-rmm-webhooks>
 
+#### Local Commander
+
+Give your AI hands on every computer you manage. Ask ChatGPT, Claude, Cursor or any MCP client to find out why a server is crawling, update a batch of PCs or sort out one user's laptop, all from one chat and without opening a remote session. Open-source local server: [local-commander-mcp-agent](https://github.com/netbka/local-commander-mcp-agent).
+
+<https://localcmd.app>
+
 ### Official Community
 
 - [Official Chat Room - Discord](https://discord.gg/upGTkWp)
