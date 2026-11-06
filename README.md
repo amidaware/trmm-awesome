@@ -28,6 +28,16 @@ Since you're probably an MSP or doing Computer management stuff here's a google 
 
 <https://docs.google.com/spreadsheets/d/1Z5JUC-FCYAIzyW2rAoXLpQYq0a8VFJ5VUh5gqSerWPY/>
 
+#### Source-dated RMM pricing dataset
+
+Compare fourteen vendor pricing disclosures, including public rates, free tiers,
+ranges, source-available software, and quote-only products. The public page links
+every row to its vendor source and provides CSV and JSON-LD downloads. It is
+maintained by Nizlo, which is one of the compared products, and is not affiliated
+with the Tactical RMM project.
+
+<https://izikipizi.github.io/nizlo-msp-operations-resources/public-rmm-pricing-dataset.html>
+
 #### Windows 7 and Powershell v2 scripts
 
 <https://github.com/darimm/RMMFunctions>
